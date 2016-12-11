@@ -41,6 +41,16 @@
     <Compile Include="quickstart\tests.py" />
     <Compile Include="quickstart\views.py" />
     <Compile Include="quickstart\__init__.py" />
+    <Compile Include="snippets\admin.py" />
+    <Compile Include="snippets\apps.py" />
+    <Compile Include="snippets\migrations\__init__.py" />
+    <Compile Include="snippets\models.py" />
+    <Compile Include="snippets\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="snippets\tests.py" />
+    <Compile Include="snippets\views.py" />
+    <Compile Include="snippets\__init__.py" />
     <Compile Include="tutorial\__init__.py" />
     <Compile Include="tutorial\settings.py" />
     <Compile Include="tutorial\urls.py" />
@@ -49,11 +59,15 @@
   <ItemGroup>
     <Content Include="quickstart\templates\index.html" />
     <Content Include="requirements.txt" />
+    <Content Include="snippets\templates\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="quickstart\" />
     <Folder Include="quickstart\migrations\" />
     <Folder Include="quickstart\templates\" />
+    <Folder Include="snippets\" />
+    <Folder Include="snippets\migrations\" />
+    <Folder Include="snippets\templates\" />
     <Folder Include="tutorial\" />
   </ItemGroup>
   <ItemGroup>
