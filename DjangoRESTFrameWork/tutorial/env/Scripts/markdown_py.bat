@@ -1,0 +1,1 @@
+@"D:\Visual Studio 2015\Projects\DjangoREST\DjangoRESTFrameWork\tutorial\env\Scripts\python.exe" "D:\Visual Studio 2015\Projects\DjangoREST\DjangoRESTFrameWork\tutorial\env\Scripts\markdown_py" %*

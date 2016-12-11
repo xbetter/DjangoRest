@@ -1,0 +1,7 @@
+django
+raml-codec
+djangorestframework
+markdown       
+django-filter 
+django-rest-raml
+pygments 

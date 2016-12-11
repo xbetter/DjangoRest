@@ -1,21 +1,33 @@
-"""
-Definition of urls for DjangoRESTFrameWork.
-"""
+from django.conf.urls import url, include
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+from rest_framework.schemas import get_schema_view
+from rest_framework_raml.renderers import RAMLRenderer, RAMLDocsRenderer
 
-from django.conf.urls import include, url
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
+schema_view = get_schema_view(
+    title='Example API',
+    renderer_classes=[RAMLRenderer, RAMLDocsRenderer]
+)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    # Examples:
-    # url(r'^$', DjangoRESTFrameWork.views.home, name='home'),
-    # url(r'^DjangoRESTFrameWork/', include('DjangoRESTFrameWork.DjangoRESTFrameWork.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include(router.urls)),
+    url(r'^raml/$', schema_view),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
